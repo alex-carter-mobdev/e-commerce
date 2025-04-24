@@ -1,0 +1,8 @@
+- auth
+- home
+- categories
+- notifications
+- orders
+- product
+- cart
+- settings

@@ -16,7 +16,7 @@ class AuthService {
     } catch (e, stacktree) {
       e as DioException;
       logger.e('${e.response}', stackTrace: stacktree);
-      return (false, "${e.response?.data['error']}");
+      return (false, "${e.response?.data['error']} \n ${e.message}");
     }
   }
 
@@ -29,7 +29,7 @@ class AuthService {
     } on DioException catch (e, stacktree) {
       logger.e('${e.response}', stackTrace: stacktree);
 
-      return (false, "${e.response?.data['error'] ?? e.message}");
+      return (false, "${e.response?.data['error']} \n ${e.message}");
     }
   }
 
@@ -46,7 +46,7 @@ class AuthService {
     } on DioException catch (e, stacktree) {
       logger.e('${e.response}', stackTrace: stacktree);
 
-      return (false, "${e.response?.data['error']}");
+      return (false, "${e.response?.data['error']} \n ${e.message}");
     }
   }
 
@@ -63,7 +63,7 @@ class AuthService {
     } on DioException catch (e, stacktree) {
       logger.e('${e.response}', stackTrace: stacktree);
 
-      return (false, "${e.response?.data['error']}");
+      return (false, "${e.response?.data['error']} \n ${e.message}");
     }
   }
 
@@ -77,7 +77,7 @@ class AuthService {
     } on DioException catch (e, stacktree) {
       logger.e('${e.response}', stackTrace: stacktree);
 
-      return (false, "${e.response?.data['error']}");
+      return (false, "${e.response?.data['error']} \n ${e.message}");
     }
   }
 }

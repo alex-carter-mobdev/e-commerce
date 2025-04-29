@@ -25,30 +25,22 @@ class Input extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color none = Colors.transparent;
     return FormBuilderTextField(
       keyboardType: type,
       textInputAction: actionButttonText,
       key: inputKey,
       name: name,
-      style: TextStyle(color: ThemeColor.black_50),
+      style: TextStyle(color: ThemeColor.black_100),
 
       decoration: InputDecoration(
         labelText: labelText,
         labelStyle: TextStyle(color: ThemeColor.black_50.withAlpha(255 ~/ 2)),
         filled: true,
-        fillColor: ThemeColor.bg_light,
+        fillColor: ThemeColor.secondary,
 
-        // Background colors
-        floatingLabelStyle: TextStyle(color: ThemeColor.black_50),
-        border: OutlineInputBorder(borderSide: BorderSide(color: none)),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: none)),
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: none)),
-        errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: none), // Visible error border
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: none), // Visible error border
+        border: OutlineInputBorder(
+          borderSide: BorderSide.none,
+          borderRadius: BorderRadius.circular(5),
         ),
       ),
       validator: FormBuilderValidators.compose(

@@ -12,7 +12,7 @@ class Back extends StatelessWidget {
     return TextButton(
       style: TextButton.styleFrom(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(999)),
-        backgroundColor: ThemeColor.bg_light,
+        backgroundColor: ThemeColor.secondary,
       ),
       onPressed: () => context.pop(),
 

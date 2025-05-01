@@ -16,7 +16,7 @@ class Back extends StatelessWidget {
       ),
       onPressed: () => context.pop(),
 
-      child: SvgPicture.asset('assets/images/arrow.svg'),
+      child: SvgPicture.asset('assets/icons/arrow_left.svg'),
     );
   }
 }

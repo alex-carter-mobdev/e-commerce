@@ -106,7 +106,7 @@ class SigninView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         spacing: 19.5,
                         children: [
-                          Divider(color: ThemeColor.primary_100, thickness: 3),
+                          Divider(color: ThemeColor.primary, thickness: 3),
                           RichText(
                             text: TextSpan(
                               style: TextStyle(color: Colors.black),

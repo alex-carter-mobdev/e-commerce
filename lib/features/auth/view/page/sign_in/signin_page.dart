@@ -73,6 +73,3 @@ class _SigninPageState extends State<SigninPage> {
     );
   }
 }
-// ! DioException [connection error]:
-// ! The connection errored: Connection failed This indicates an error which most likely cannot solved by the library.
-// ! Error SocketException Connection failed (OS Error: Permission denied, errno=13), address= 192.168.1.9, port=5000

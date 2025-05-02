@@ -1,5 +1,5 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, file_names, use_build_context_synchronously
-import 'package:e_commerce/core/theme/routes.dart';
+import 'package:e_commerce/core/theme/router.dart';
 import 'package:e_commerce/core/utils/logger.dart';
 import 'package:e_commerce/core/utils/toast.dart';
 
@@ -54,7 +54,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
         var res = await AuthService().resetPassword(newData);
         setState(() => loading = false);
 
-        res.$1 ? context.pushNamed(Routes.signIn) : Toastify.e(res.$2);
+        res.$1 ? context.push(Routes.signIn) : Toastify.e(res.$2);
       }
     }
 

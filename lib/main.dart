@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/storage/auth_local_storage.dart';
-import 'package:e_commerce/core/theme/routes.dart';
+import 'package:e_commerce/core/theme/router.dart';
 import 'package:e_commerce/features/auth/viewModel/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +30,7 @@ class _MainAppState extends State<MainApp> {
       child: MaterialApp.router(
         theme: ThemeData(fontFamily: 'Gabarito'),
         debugShowCheckedModeBanner: false,
-        routerConfig: Routes.router,
+        routerConfig: router,
       ),
     );
   }

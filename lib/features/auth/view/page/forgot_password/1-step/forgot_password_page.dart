@@ -1,6 +1,6 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers
 
-import 'package:e_commerce/core/theme/routes.dart';
+import 'package:e_commerce/core/theme/router.dart';
 import 'package:e_commerce/core/utils/toast.dart';
 import 'package:e_commerce/features/auth/view/page/forgot_password/1-step/forgot_password_view.dart';
 import 'package:e_commerce/features/auth/view/widgets/back_button.dart';
@@ -41,7 +41,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       _formKey.currentState!.saveAndValidate(focusOnInvalid: false);
       if (_formKey.currentState!.isValid) {
         authBloc.add(AuthSaveEmail(_emailFieldKey.currentState?.value));
-        context.pushNamed(Routes.forgotPassword.step2);
+        context.push(Routes.forgotPassword.step2);
       }
     }
 

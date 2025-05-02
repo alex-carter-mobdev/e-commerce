@@ -1,5 +1,5 @@
 // ignore_for_file: no_leading_underscores_for_local_identifiers, use_build_context_synchronously
-import 'package:e_commerce/core/theme/routes.dart';
+import 'package:e_commerce/core/theme/router.dart';
 import 'package:e_commerce/core/utils/logger.dart';
 import 'package:e_commerce/core/utils/toast.dart';
 
@@ -52,11 +52,11 @@ class _SigninPageState extends State<SigninPage> {
     }
 
     Future<void> forgotPasswordFn() async {
-      context.pushNamed(Routes.forgotPassword.step1);
+      context.push(Routes.forgotPassword.step1);
     }
 
     Future<void> toSignUp() async {
-      context.pushNamed(Routes.signUp);
+      context.push(Routes.signUp);
     }
 
     return Scaffold(

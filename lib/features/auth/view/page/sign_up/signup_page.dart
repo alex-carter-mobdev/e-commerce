@@ -50,7 +50,7 @@ class _SignUpPageState extends State<SignUpPage> {
         var res = await AuthService().signUp(data);
         setState(() => loading = false);
 
-        res.$1 ? context.goNamed(Routes.aboutYourself) : Toastify.e(res.$2);
+        res.$1 ? context.go(Routes.aboutYourself) : Toastify.e(res.$2);
       }
     }
 

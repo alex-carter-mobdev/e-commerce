@@ -39,6 +39,7 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     Future<void> singIn() async {
       _formKey.currentState?.saveAndValidate(focusOnInvalid: true);
+
       if (_formKey.currentState!.isValid) {
         var data = _formKey.currentState!.value;
         logger.i(data);
@@ -47,7 +48,7 @@ class _SigninPageState extends State<SigninPage> {
         var res = await AuthService().signIn(data);
         setState(() => loading = false);
 
-        res.$1 ? context.goNamed(Routes.home) : Toastify.e(res.$2);
+        res.$1 ? context.go(Routes.home) : Toastify.e(res.$2);
       }
     }
 

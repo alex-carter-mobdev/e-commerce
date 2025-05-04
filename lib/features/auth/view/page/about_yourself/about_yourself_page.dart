@@ -57,7 +57,7 @@ class _AboutYourselfPageState extends State<AboutYourselfPage> {
         var res = await AuthService().updateUserData(data);
         setState(() => loading = false);
 
-        res.$1 ? context.goNamed(Routes.home) : Toastify.e(res.$2);
+        res.$1 ? context.go(Routes.home) : Toastify.e(res.$2);
       }
     }
 

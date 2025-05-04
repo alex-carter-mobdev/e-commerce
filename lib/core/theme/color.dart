@@ -10,4 +10,5 @@ class ThemeColor {
   static Color white_100 = Color(0xFFffffff);
   static Color white_50 = Color(0xFF858484);
   static Color secondary = Color(0xFFF4F4F4);
+  static Color red = Color(0xFFFA3636);
 }

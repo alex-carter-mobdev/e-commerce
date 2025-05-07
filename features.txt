@@ -6,3 +6,9 @@
 - product
 - cart
 - settings
+
+- fix issue related with bloc
+- push
+- do address page
+- push
+- do address_add_edit

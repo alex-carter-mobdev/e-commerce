@@ -1,15 +1,15 @@
-import 'package:e_commerce/core/utils/toast.dart';
-import 'package:e_commerce/features/auth/model/service/auth_service.dart';
 import 'package:e_commerce/features/auth/view/widgets/input.dart';
+import 'package:e_commerce/features/settings/viewModel/bloc/profile_bloc.dart';
+import 'package:e_commerce/features/settings/viewModel/bloc/profile_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:form_builder_validators/form_builder_validators.dart';
 import 'package:go_router/go_router.dart';
 
 class Popup extends StatefulWidget {
-  const Popup(this.getProfileData, {super.key});
+  const Popup(this.popUpSave, {super.key});
 
-  final void Function() getProfileData;
+  final void Function(dynamic) popUpSave;
 
   @override
   State<Popup> createState() => _PopupState();
@@ -19,7 +19,6 @@ class _PopupState extends State<Popup> {
   final _formKey = GlobalKey<FormBuilderState>();
   final _firstNameKey = GlobalKey<FormBuilderFieldState>();
   final _lastNameKey = GlobalKey<FormBuilderFieldState>();
-  final _emailKey = GlobalKey<FormBuilderFieldState>();
 
   @override
   void dispose() {
@@ -32,69 +31,52 @@ class _PopupState extends State<Popup> {
     return Dialog(
       child: Container(
         padding: EdgeInsets.all(20),
-        // constraints: BoxConstraints(maxHeight: 600),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 20,
-            children: [
-              Text('Edit your profile setting', style: TextStyle(fontSize: 20)),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 20,
+          children: [
+            Text('Edit your profile setting', style: TextStyle(fontSize: 20)),
 
-              FormBuilder(
-                autovalidateMode: AutovalidateMode.onUnfocus,
-                key: _formKey,
-                child: Column(
-                  spacing: 10,
-                  children: [
-                    Input(
-                      inputKey: _firstNameKey,
-                      name: 'firstName',
-                      labelText: 'First name',
-                      type: TextInputType.text,
+            FormBuilder(
+              autovalidateMode: AutovalidateMode.onUnfocus,
+              key: _formKey,
+              child: BlocBuilder<ProfileBloc, ProfileState>(
+                builder:
+                    (context, state) => Column(
+                      spacing: 10,
+                      children: [
+                        Input(
+                          inputKey: _firstNameKey,
+                          initialValue: state.firstName,
+                          name: 'firstName',
+                          labelText: 'First name',
+                          type: TextInputType.text,
+                        ),
+                        Input(
+                          initialValue: state.lastName,
+                          inputKey: _lastNameKey,
+                          name: 'lastName',
+                          labelText: 'Last name',
+                          type: TextInputType.text,
+                        ),
+                      ],
                     ),
-                    Input(
-                      inputKey: _lastNameKey,
-                      name: 'lastName',
-                      labelText: 'Last name',
-                      type: TextInputType.text,
-                    ),
-                    Input(
-                      inputKey: _emailKey,
-                      name: 'email',
-                      labelText: 'Your email',
-                      type: TextInputType.text,
-                      validatorsList: [FormBuilderValidators.email()],
-                    ),
-                  ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  onPressed: () => context.pop(),
+                  child: Text('Close'),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(
-                    onPressed: () => context.pop(),
-                    child: Text('Close'),
-                  ),
-                  TextButton(
-                    onPressed: () async {
-                      _formKey.currentState!.saveAndValidate(
-                        focusOnInvalid: true,
-                      );
-                      if (_formKey.currentState!.isValid) {
-                        Map<String, dynamic> value =
-                            _formKey.currentState!.value;
-                        var result = await AuthService().updateUserData(value);
-
-                        result.$1 ? context.pop() : Toastify.e(result.$2);
-                        widget.getProfileData();
-                      }
-                    },
-                    child: Text('Edit'),
-                  ),
-                ],
-              ),
-            ],
-          ),
+                TextButton(
+                  onPressed: () => widget.popUpSave(_formKey),
+                  child: Text('Edit'),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );

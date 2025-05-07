@@ -13,6 +13,7 @@ class Input extends StatelessWidget {
     this.isPassword,
     required this.type,
     this.actionButttonText,
+    this.initialValue,
   });
 
   final GlobalKey<FormBuilderFieldState> inputKey;
@@ -23,9 +24,12 @@ class Input extends StatelessWidget {
   final bool? isPassword;
   final TextInputAction? actionButttonText;
 
+  final String? initialValue;
+
   @override
   Widget build(BuildContext context) {
     return FormBuilderTextField(
+      initialValue: initialValue,
       keyboardType: type,
       textInputAction: actionButttonText,
       key: inputKey,

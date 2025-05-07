@@ -1,0 +1,122 @@
+import 'package:e_commerce/core/storage/auth_local_storage.dart';
+import 'package:e_commerce/core/theme/router.dart';
+import 'package:e_commerce/core/utils/logger.dart';
+import 'package:e_commerce/core/utils/toast.dart';
+import 'package:e_commerce/features/auth/model/service/auth_service.dart';
+import 'package:e_commerce/features/settings/model/settings_service.dart';
+import 'package:e_commerce/features/settings/view/page/settings/settings_view.dart';
+import 'package:e_commerce/features/settings/view/widgets/popup.dart';
+import 'package:e_commerce/features/settings/viewModel/bloc/profile_bloc.dart';
+import 'package:e_commerce/features/settings/viewModel/bloc/profile_event.dart';
+import 'package:e_commerce/features/settings/viewModel/bloc/profile_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+class SettingsPage extends StatefulWidget {
+  const SettingsPage({super.key});
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  bool loading = false;
+  ProfileBloc? profileBloc;
+
+  void getProfileData(profileBloc) async {
+    var res = await SettingsService().getProfileData();
+    var data = res.$3;
+
+    if (res.$1) {
+      profileBloc.add(
+        ChangeProfileData(
+          firstName: data['firstName'],
+          lastName: data['lastName'],
+          email: data['email'],
+        ),
+      );
+    } else {
+      Toastify.e(res.$2);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Toastify.init(context);
+    profileBloc = BlocProvider.of<ProfileBloc>(context);
+    getProfileData(profileBloc);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    void popUpSave(formKey) async {
+      formKey.currentState!.saveAndValidate(focusOnInvalid: true);
+      if (formKey.currentState!.isValid) {
+        Map<String, dynamic> value = formKey.currentState!.value;
+        var result = await AuthService().updateUserData(value);
+
+        result.$1 ? context.pop() : Toastify.e(result.$2);
+        getProfileData(profileBloc);
+      }
+    }
+
+    onEditPressed() {
+      showDialog(context: context, builder: (context) => Popup(popUpSave));
+    }
+
+    onSignOutPressed() {
+      showDialog(
+        context: context,
+
+        builder:
+            (context) => AlertDialog(
+              title: Text('Are u sure to delete this profile?'),
+
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    context.pop();
+                  },
+
+                  child: Text('No!'),
+                ),
+
+                TextButton(
+                  onPressed: () {
+                    AuthLocalStorage().delete();
+
+                    context.go(Routes.signIn);
+                  },
+
+                  child: Text('Yes!'),
+                ),
+              ],
+            ),
+      );
+    }
+
+    return Scaffold(
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+        child: BlocBuilder<ProfileBloc, ProfileState>(
+          bloc: profileBloc,
+          builder: (context, state) {
+            String firstName = state.firstName;
+            String lastName = state.lastName;
+            String email = state.email;
+
+            return SettingsView(
+              firstName,
+              lastName,
+              email,
+              onEditPressed: onEditPressed,
+              onSignOutPressed: onSignOutPressed,
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

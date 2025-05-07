@@ -7,8 +7,10 @@
 - cart
 - settings
 
-- fix issue related with bloc
-- push
-- do address page
-- push
-- do address_add_edit
+- error after editing the item (item disappears)
+- add also has problem
+- do env that will have token and other things (token just for to test)
+refactor
+- do title widget and refactor back widget
+- image add placeholder widget
+- do a loading to names and email in profile

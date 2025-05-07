@@ -31,9 +31,25 @@ class _SettingsPageState extends State<SettingsPage> {
     if (res.$1) {
       profileBloc.add(
         ChangeProfileData(
-          firstName: data['firstName'],
-          lastName: data['lastName'],
-          email: data['email'],
+          id: data!['id'] as String?,
+          firstName: data['firstName'] as String?,
+          lastName: data['lastName'] as String?,
+          email: data['email'] as String?,
+          age: data['age'] as int?,
+          gender: data['gender'] as String?,
+
+          addresses:
+              (data['addresses'] as List?)
+                  ?.map((e) => Map<String, String>.from(e))
+                  .toList(),
+          payments:
+              (data['payments'] as List?)
+                  ?.map((e) => Map<String, String>.from(e))
+                  .toList(),
+          favorites:
+              (data['favorites'] as List?)
+                  ?.map((e) => Map<String, String>.from(e))
+                  .toList(),
         ),
       );
     } else {

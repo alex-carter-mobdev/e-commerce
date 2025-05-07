@@ -3,6 +3,8 @@ import 'package:e_commerce/features/auth/view/page/forgot_password/1-step/forgot
 import 'package:e_commerce/features/auth/view/page/forgot_password/2-step/forgot_password_page.dart'
     as step2_page;
 import 'package:e_commerce/features/auth/view/page/about_yourself/about_yourself_page.dart';
+import 'package:e_commerce/features/settings/view/page/address/add_edit/address_add_edit_page.dart';
+import 'package:e_commerce/features/settings/view/page/address/overview/address_page.dart';
 import 'package:e_commerce/features/settings/view/page/settings/settings_page.dart';
 import 'package:e_commerce/features/settings/view/widgets/footer_navbar.dart';
 import 'package:flutter/material.dart';
@@ -79,6 +81,21 @@ GoRouter router = GoRouter(
               builder: (context, state) => SettingsPage(),
             ),
           ],
+        ),
+      ],
+    ),
+    GoRoute(
+      path: Routes.address,
+      builder: (context, state) => AddressPage(),
+
+      routes: [
+        GoRoute(
+          path: Routes.addressAddEdit,
+          builder:
+              (context, state) => AddressAddEditPage(
+                id: state.pathParameters['id'] ?? '',
+                querryParameters: state.uri.queryParameters,
+              ),
         ),
       ],
     ),

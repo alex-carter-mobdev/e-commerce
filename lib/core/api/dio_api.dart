@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:e_commerce/core/storage/auth_local_storage.dart';
 import 'package:e_commerce/core/utils/logger.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DioInstance {
-  final Dio _dio = Dio(BaseOptions(baseUrl: 'http://192.168.1.10:5000/api'));
+  final Dio _dio = Dio(BaseOptions(baseUrl: dotenv.env['API_URL'] as String));
 
   static final DioInstance _instance = DioInstance._internal();
   factory DioInstance() => _instance;

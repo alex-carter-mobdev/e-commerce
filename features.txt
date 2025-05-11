@@ -7,9 +7,7 @@
 - cart
 - settings
 
-- error after editing the item (item disappears)
-- add also has problem
-- do env that will have token and other things (token just for to test)
+- make profileBloc user shared on change do refetch
 refactor
 - do title widget and refactor back widget
 - image add placeholder widget

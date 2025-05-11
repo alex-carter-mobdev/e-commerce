@@ -49,28 +49,21 @@ class DioInstance {
 
   onResponse(Response<dynamic> response, ResponseInterceptorHandler handler) {
     logger.i('onResponse');
-    logger.i(AuthLocalStorage().get());
-
     Map<String, List<String>> headers = response.headers.map;
     String token =
         headers['authorization'] != null
             ? headers['authorization']!.join('').replaceAll('Bearer ', '')
             : '';
     token != '' ? AuthLocalStorage().set(token) : null;
-    logger.i(AuthLocalStorage().get());
-
     return handler.next(response);
   }
 
   onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     logger.i('onRequest');
-    logger.i(AuthLocalStorage().get());
     String token = AuthLocalStorage().get();
     token != ''
         ? options.headers.addAll({'authorization': 'Bearer $token'})
         : null;
-    logger.i(AuthLocalStorage().get());
-
     return handler.next(options);
   }
 

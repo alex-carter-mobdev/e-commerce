@@ -1,15 +1,15 @@
-class ProfileState {
+class UserState {
   final String id;
   final String firstName;
   final String lastName;
   final String email;
   final String gender;
   final int age;
-  final List<Map<String, String>> addresses;
-  final List<Map<String, String>> payments;
-  final List<Map<String, String>> favorites;
+  final List<Map<String, dynamic>> addresses;
+  final List<Map<String, dynamic>> payments;
+  final List<Map<String, dynamic>> favorites;
 
-  const ProfileState({
+  UserState({
     this.id = '',
     this.firstName = '',
     this.lastName = '',
@@ -27,18 +27,18 @@ class ProfileState {
     ],
   });
 
-  ProfileState copyWith({
+  UserState copyWith({
     String? id,
     String? firstName,
     String? lastName,
     String? email,
     String? gender,
     int? age,
-    List<Map<String, String>>? addresses,
-    List<Map<String, String>>? payments,
-    List<Map<String, String>>? favorites,
+    List<Map<String, dynamic>>? addresses,
+    List<Map<String, dynamic>>? payments,
+    List<Map<String, dynamic>>? favorites,
   }) {
-    return ProfileState(
+    return UserState(
       id: id ?? this.id,
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,

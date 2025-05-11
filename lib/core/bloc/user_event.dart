@@ -1,6 +1,6 @@
-abstract class ProfileEvent {}
+abstract class UserEvent {}
 
-class ChangeProfileData extends ProfileEvent {
+class SetUserData extends UserEvent {
   final String? id;
   final String? firstName;
   final String? lastName;
@@ -11,7 +11,7 @@ class ChangeProfileData extends ProfileEvent {
   final List<Map<String, String>>? payments;
   final List<Map<String, String>>? favorites;
 
-  ChangeProfileData({
+  SetUserData({
     this.id,
     this.firstName,
     this.lastName,
@@ -23,3 +23,5 @@ class ChangeProfileData extends ProfileEvent {
     this.favorites,
   });
 }
+
+class ReFetchUserData extends UserEvent {}

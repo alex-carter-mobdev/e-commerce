@@ -6,7 +6,7 @@ class SettingsService {
   final String _endpointUsers = '/users/user';
   final String _endpointAddress = '/users/address';
   // ! settings
-  Future<(bool, String, dynamic)> getProfileData() async {
+  Future<(bool, String, dynamic)> getUserData() async {
     bool isSuccess = false;
     String error = 'Unexpected, error happend';
     dynamic data;
@@ -32,7 +32,7 @@ class SettingsService {
     }
   }
 
-  Future<(bool, String, dynamic)> editProfileData(
+  Future<(bool, String, dynamic)> editUserData(
     Map<String, dynamic> data,
   ) async {
     bool isSuccess = false;

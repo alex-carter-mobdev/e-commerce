@@ -5,6 +5,7 @@ import 'package:e_commerce/features/auth/view/page/forgot_password/2-step/forgot
 import 'package:e_commerce/features/auth/view/page/about_yourself/about_yourself_page.dart';
 import 'package:e_commerce/features/settings/view/page/address/add_edit/address_add_edit_page.dart';
 import 'package:e_commerce/features/settings/view/page/address/overview/address_page.dart';
+import 'package:e_commerce/features/settings/view/page/payments/overview/payments_page.dart';
 import 'package:e_commerce/features/settings/view/page/settings/settings_page.dart';
 import 'package:e_commerce/features/settings/view/widgets/footer_navbar.dart';
 import 'package:flutter/material.dart';
@@ -99,6 +100,7 @@ GoRouter router = GoRouter(
         ),
       ],
     ),
+    GoRoute(path: Routes.payments, builder: (context, state) => PaymentsPage()),
   ],
 );
 

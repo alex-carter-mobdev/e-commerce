@@ -5,7 +5,7 @@ import 'package:e_commerce/core/utils/logger.dart';
 class SettingsService {
   final String _endpointUsers = '/users/user';
   final String _endpointAddress = '/users/address';
-  final String _endpointPayments = '/users/payments';
+  final String _endpointPayments = '/users/payment';
   // ! settings
   Future<(bool, String, dynamic)> getUserData() async {
     bool isSuccess = false;
@@ -209,6 +209,7 @@ class SettingsService {
 
     try {
       var result = await DioInstance().delete('$_endpointPayments/$id');
+      logger.i(result.data);
 
       isSuccess = result.data['success'] ?? false;
       error = result.data['error'] ?? 'Unexpected, error happend';

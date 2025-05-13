@@ -1,4 +1,5 @@
 import 'package:e_commerce/core/theme/color.dart';
+import 'package:e_commerce/core/theme/router.dart';
 import 'package:e_commerce/features/settings/view/widgets/tile.dart';
 import 'package:e_commerce/features/settings/view/widgets/tile_edit.dart';
 import 'package:flutter/material.dart';
@@ -38,9 +39,9 @@ class SettingsView extends StatelessWidget {
             spacing: 8,
             children: [
               // TODO: add address, favourites, payment page
-              Tile(location: '/address', name: 'Address'),
+              Tile(location: Routes.address, name: 'Address'),
               Tile(location: '/favourites', name: 'Favourites'),
-              Tile(location: '/payment', name: 'Payment'),
+              Tile(location: Routes.payments, name: 'Payment'),
               Tile(location: null, name: 'Help'),
               Tile(location: null, name: 'Support'),
             ],

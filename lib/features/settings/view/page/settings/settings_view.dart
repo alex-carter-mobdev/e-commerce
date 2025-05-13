@@ -31,7 +31,7 @@ class SettingsView extends StatelessWidget {
           TileEdit(
             title: '$firstName $lastName',
             subtitle: email,
-            onPressed: onEditPressed,
+            onEditPressed: onEditPressed,
           ),
           SizedBox(height: 24),
           Column(

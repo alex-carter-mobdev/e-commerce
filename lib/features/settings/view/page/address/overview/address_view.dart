@@ -6,10 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddressView extends StatefulWidget {
-  const AddressView({super.key, required this.onAdd, required this.onEdit});
+  const AddressView({
+    super.key,
+    required this.onAdd,
+    required this.onEdit,
+    required this.onDelete,
+  });
 
   final void Function() onAdd;
   final void Function(String, String, String, String, String) onEdit;
+  final void Function(String) onDelete;
 
   @override
   State<AddressView> createState() => _AddressViewState();
@@ -48,7 +54,7 @@ class _AddressViewState extends State<AddressView> {
                       padding: const EdgeInsets.only(bottom: 12),
                       child: TileEdit(
                         subtitle: addressValue.values.join(' '),
-                        onPressed: () {
+                        onEditPressed: () {
                           return widget.onEdit(
                             id,
                             street,
@@ -57,6 +63,7 @@ class _AddressViewState extends State<AddressView> {
                             zipCode,
                           );
                         },
+                        onDeletePressed: () => widget.onDelete(id),
                       ),
                     );
                   },

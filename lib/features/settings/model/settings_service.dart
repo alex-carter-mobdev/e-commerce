@@ -116,10 +116,7 @@ class SettingsService {
     }
   }
 
-  Future<(bool, String, dynamic)> deleteAddress(
-    Map<String, dynamic> data,
-    String id,
-  ) async {
+  Future<(bool, String, dynamic)> deleteAddress(String id) async {
     bool isSuccess = false;
     String error = 'Unexpected, error happend';
     dynamic response;

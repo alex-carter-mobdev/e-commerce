@@ -1,61 +1,97 @@
 import 'package:e_commerce/core/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class TileEdit extends StatelessWidget {
   const TileEdit({
     super.key,
     this.title,
     required this.subtitle,
-    required this.onPressed,
+    required this.onEditPressed,
+    this.onDeletePressed,
   });
 
   final String? title;
   final String subtitle;
-  final void Function() onPressed;
+  final void Function() onEditPressed;
+  final void Function()? onDeletePressed;
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Container(
-        color: ThemeColor.secondary,
+    return Slidable(
+      key: const ValueKey(0),
 
-        padding: EdgeInsets.only(
-          left: 16,
-          right: 20,
-          bottom: title != null ? 36 : 18,
-          top: 13,
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Column(
-              spacing: 8,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                title != null
-                    ? Text(
-                      title!,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                      ),
-                    )
-                    : SizedBox(),
-                Text(
-                  subtitle,
-                  style: TextStyle(
-                    color: title != null ? ThemeColor.black_50 : null,
+      endActionPane:
+          title == null
+              ? ActionPane(
+                motion: ScrollMotion(),
+
+                children: [
+                  SlidableAction(
+                    onPressed: (context) => onEditPressed(),
+                    backgroundColor: Color(0xFF0392CF),
+                    foregroundColor: Colors.white,
+                    icon: Icons.edit,
+                    // label: 'Edit',
                   ),
-                ),
-              ],
-            ),
-            TextButton(
-              onPressed: onPressed,
-              child: Text('Edit', style: TextStyle(color: ThemeColor.primary)),
-            ),
-          ],
+                  SlidableAction(
+                    onPressed: (context) => onDeletePressed!(),
+                    backgroundColor: Color(0xFFFE4A49),
+                    foregroundColor: Colors.white,
+                    icon: Icons.delete,
+                    // label: 'Delete',
+                  ),
+                ],
+              )
+              : null,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Container(
+          color: ThemeColor.secondary,
+
+          padding: EdgeInsets.only(
+            left: 16,
+            right: 20,
+            bottom: title != null ? 36 : 18,
+            top: 13,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Column(
+                spacing: 8,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  title != null
+                      ? Text(
+                        title!,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      )
+                      : SizedBox(),
+
+                  Text(
+                    subtitle,
+                    style: TextStyle(
+                      color: title != null ? ThemeColor.black_50 : null,
+                    ),
+                  ),
+                ],
+              ),
+              title != null
+                  ? TextButton(
+                    onPressed: onEditPressed,
+                    child: Text(
+                      'Edit',
+                      style: TextStyle(color: ThemeColor.primary),
+                    ),
+                  )
+                  : SizedBox(),
+            ],
+          ),
         ),
       ),
     );

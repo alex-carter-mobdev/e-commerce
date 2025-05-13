@@ -25,7 +25,7 @@ class _PaymentsViewState extends State<PaymentsView> {
   @override
   Widget build(BuildContext context) {
     final user = BlocProvider.of<User>(context);
-    RegExp regex = RegExp(r'^(cardNumber|ccv|exp|cardholderName)$');
+    RegExp regex = RegExp(r'^(cardNumber|ccv|expireDate|cardName)$');
     Map paymentsValue;
 
     return Container(
@@ -44,9 +44,9 @@ class _PaymentsViewState extends State<PaymentsView> {
                     String cardNumber =
                         state.payments[index]['cardNumber'] ?? '';
                     String ccv = state.payments[index]['ccv'] ?? '';
-                    String exp = state.payments[index]['exp'] ?? '';
+                    String exp = state.payments[index]['expireDate'] ?? '';
                     String cardholderName =
-                        state.payments[index]['cardholderName'] ?? '';
+                        state.payments[index]['cardName'] ?? '';
 
                     paymentsValue = state.payments[index];
                     paymentsValue.removeWhere(

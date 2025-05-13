@@ -10,8 +10,9 @@ class Routes {
   static String orders = '/orders';
   static String notifications = '/notifications';
   static String address = '/address';
-  static String payments = '/payments';
   static String addressAddEdit = ':id';
+  static String payments = '/payments';
+  static String paymentsAddEdit = ':id';
   static var forgotPassword = _ForgotPasswordRoutes();
 
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();

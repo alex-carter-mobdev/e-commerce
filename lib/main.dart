@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/storage/auth_local_storage.dart';
-import 'package:e_commerce/core/theme/router.dart';
+import 'package:e_commerce/core/routes/router.dart';
 import 'package:e_commerce/core/utils/logger.dart';
 import 'package:e_commerce/features/auth/viewModel/bloc/auth_bloc.dart';
 import 'package:e_commerce/core/bloc/user_bloc.dart';

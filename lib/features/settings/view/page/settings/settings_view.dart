@@ -1,5 +1,5 @@
 import 'package:e_commerce/core/theme/color.dart';
-import 'package:e_commerce/core/theme/router.dart';
+import 'package:e_commerce/core/routes/router.dart';
 import 'package:e_commerce/features/settings/view/widgets/tile.dart';
 import 'package:e_commerce/features/settings/view/widgets/tile_edit.dart';
 import 'package:flutter/material.dart';

@@ -7,8 +7,15 @@
 - cart
 - settings
 
-- make profileBloc user shared on change do refetch
 refactor
 - do title widget and refactor back widget
 - image add placeholder widget
 - do a loading to names and email in profile
+- use enums
+- move route-related files to seperate folder routes
+- make order's, home's and search's widgets like product's widgets (make every bloc widget)
+
+- fix android error (for myself run flutter doctor)
+
+
+

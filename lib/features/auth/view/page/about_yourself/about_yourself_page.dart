@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:e_commerce/core/theme/router.dart';
+import 'package:e_commerce/core/routes/router.dart';
 import 'package:e_commerce/core/utils/logger.dart';
 import 'package:e_commerce/core/utils/toast.dart';
 

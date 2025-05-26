@@ -1,6 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:e_commerce/core/theme/router.dart';
+import 'package:e_commerce/core/routes/router.dart';
 import 'package:e_commerce/core/utils/toast.dart';
 import 'package:e_commerce/features/auth/model/service/auth_service.dart';
 import 'package:e_commerce/features/auth/view/page/forgot_password/2-step/forgot_password_view.dart';

@@ -1,6 +1,7 @@
 import 'package:e_commerce/core/bloc/user_bloc.dart';
 import 'package:e_commerce/core/bloc/user_event.dart';
 import 'package:e_commerce/core/routes/router.dart';
+import 'package:e_commerce/core/utils/logger.dart';
 import 'package:e_commerce/core/utils/toast.dart';
 import 'package:e_commerce/core/widgets/back_button.dart';
 import 'package:e_commerce/features/settings/model/settings_service.dart';
@@ -10,7 +11,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class AddressPage extends StatefulWidget {
-  const AddressPage({super.key});
+  final Map<String, String> querryParamerts;
+  const AddressPage({super.key, required this.querryParamerts});
 
   @override
   State<AddressPage> createState() => _AddressPageState();

@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/storage/auth_local_storage.dart';
 import 'package:e_commerce/core/routes/router.dart';
+import 'package:e_commerce/core/utils/logger.dart';
 import 'package:e_commerce/core/utils/toast.dart';
 import 'package:e_commerce/features/auth/model/service/auth_service.dart';
 import 'package:e_commerce/features/settings/model/settings_service.dart';
@@ -22,38 +23,6 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool loading = false;
   User? user;
-
-  void getUserData(user) async {
-    var res = await SettingsService().getUserData();
-    var data = res.$3;
-    if (res.$1) {
-      user.add(
-        SetUserData(
-          id: data!['id'] as String?,
-          firstName: data['firstName'] as String?,
-          lastName: data['lastName'] as String?,
-          email: data['email'] as String?,
-          age: data['age'] as int?,
-          gender: data['gender'] as String?,
-
-          addresses:
-              (data['addresses'] as List?)
-                  ?.map((e) => Map<String, String>.from(e))
-                  .toList(),
-          payments:
-              (data['payments'] as List?)
-                  ?.map((e) => Map<String, String>.from(e))
-                  .toList(),
-          favorites:
-              (data['favorites'] as List?)
-                  ?.map((e) => Map<String, String>.from(e))
-                  .toList(),
-        ),
-      );
-    } else {
-      Toastify.e(res.$2);
-    }
-  }
 
   @override
   void initState() {
@@ -132,5 +101,37 @@ class _SettingsPageState extends State<SettingsPage> {
         ),
       ),
     );
+  }
+}
+
+void getUserData(user) async {
+  var res = await SettingsService().getUserData();
+  var data = res.$3;
+  if (res.$1) {
+    user.add(
+      SetUserData(
+        id: data!['id'] as String?,
+        firstName: data['firstName'] as String?,
+        lastName: data['lastName'] as String?,
+        email: data['email'] as String?,
+        age: data['age'] as int?,
+        gender: data['gender'] as String?,
+
+        addresses:
+            (data['addresses'] as List?)
+                ?.map((e) => Map<String, String>.from(e))
+                .toList(),
+        payments:
+            (data['payments'] as List?)
+                ?.map((e) => Map<String, String>.from(e))
+                .toList(),
+        favorites:
+            (data['favorites'] as List?)
+                ?.map((e) => Map<String, String>.from(e))
+                .toList(),
+      ),
+    );
+  } else {
+    Toastify.e(res.$2);
   }
 }

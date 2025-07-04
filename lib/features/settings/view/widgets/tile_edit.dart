@@ -7,13 +7,15 @@ class TileEdit extends StatelessWidget {
     super.key,
     this.title,
     required this.subtitle,
-    required this.onEditPressed,
+    this.onEditPressed,
     this.onDeletePressed,
+    this.onTap,
   });
 
   final String? title;
   final String subtitle;
   final void Function()? onEditPressed;
+  final void Function()? onTap;
   final void Function()? onDeletePressed;
 
   @override
@@ -35,7 +37,7 @@ class TileEdit extends StatelessWidget {
                     // label: 'Edit',
                   ),
                   SlidableAction(
-                    onPressed: (context) => onDeletePressed!(),
+                    onPressed: (context) => onDeletePressed?.call(),
                     backgroundColor: Color(0xFFFE4A49),
                     foregroundColor: Colors.white,
                     icon: Icons.delete,
@@ -46,51 +48,54 @@ class TileEdit extends StatelessWidget {
               : null,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: Container(
-          color: ThemeColor.secondary,
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            color: ThemeColor.secondary,
 
-          padding: EdgeInsets.only(
-            left: 16,
-            right: 20,
-            bottom: title != null ? 36 : 18,
-            top: 13,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Column(
-                spacing: 8,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  title != null
-                      ? Text(
-                        title!,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                        ),
-                      )
-                      : SizedBox(),
+            padding: EdgeInsets.only(
+              left: 16,
+              right: 20,
+              bottom: title != null ? 36 : 18,
+              top: 13,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
+                  spacing: 8,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    title != null
+                        ? Text(
+                          title!,
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        )
+                        : SizedBox(),
 
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      color: title != null ? ThemeColor.black_50 : null,
+                    Text(
+                      subtitle,
+                      style: TextStyle(
+                        color: title != null ? ThemeColor.black_50 : null,
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              title != null
-                  ? TextButton(
-                    onPressed: onEditPressed,
-                    child: Text(
-                      'Edit',
-                      style: TextStyle(color: ThemeColor.primary),
-                    ),
-                  )
-                  : SizedBox(),
-            ],
+                  ],
+                ),
+                title != null
+                    ? TextButton(
+                      onPressed: onEditPressed,
+                      child: Text(
+                        'Edit',
+                        style: TextStyle(color: ThemeColor.primary),
+                      ),
+                    )
+                    : SizedBox(),
+              ],
+            ),
           ),
         ),
       ),

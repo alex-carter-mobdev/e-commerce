@@ -5,7 +5,7 @@ import 'package:e_commerce/features/settings/view/widgets/tile_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddressView extends StatefulWidget {
+class AddressView extends StatelessWidget {
   const AddressView({
     super.key,
     required this.onAdd,
@@ -18,17 +18,12 @@ class AddressView extends StatefulWidget {
   final void Function(String) onDelete;
 
   @override
-  State<AddressView> createState() => _AddressViewState();
-}
-
-class _AddressViewState extends State<AddressView> {
-  @override
   Widget build(BuildContext context) {
     final user = BlocProvider.of<User>(context);
     RegExp regex = RegExp(r'^(street|city|state|zipCode)$');
     Map addressValue;
 
-    return Container(
+    return Padding(
       padding: const EdgeInsets.all(24.0),
       child: Column(
         children: [
@@ -45,7 +40,6 @@ class _AddressViewState extends State<AddressView> {
                     String city = state.addresses[index]['city'] ?? '';
                     String stateOfUser = state.addresses[index]['state'] ?? '';
                     String zipCode = state.addresses[index]['zipCode'] ?? '';
-
                     addressValue = state.addresses[index];
                     addressValue.removeWhere(
                       (key, value) => !regex.hasMatch(key),
@@ -55,15 +49,9 @@ class _AddressViewState extends State<AddressView> {
                       child: TileEdit(
                         subtitle: addressValue.values.join(' '),
                         onEditPressed: () {
-                          return widget.onEdit(
-                            id,
-                            street,
-                            city,
-                            stateOfUser,
-                            zipCode,
-                          );
+                          return onEdit(id, street, city, stateOfUser, zipCode);
                         },
-                        onDeletePressed: () => widget.onDelete(id),
+                        onDeletePressed: () => onDelete(id),
                       ),
                     );
                   },
@@ -72,7 +60,7 @@ class _AddressViewState extends State<AddressView> {
             ),
           ),
 
-          PrimaryButton('Add', onPressed: widget.onAdd),
+          PrimaryButton('Add', onPressed: onAdd),
         ],
       ),
     );

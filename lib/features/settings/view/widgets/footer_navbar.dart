@@ -41,6 +41,7 @@ class FooterNavbar extends StatelessWidget {
               isActive: true,
             ),
           ),
+
           NavigationDestination(
             label: '',
             tooltip: 'Orders',

@@ -11,11 +11,13 @@ class PaymentsView extends StatefulWidget {
     required this.onAdd,
     required this.onEdit,
     required this.onDelete,
+    required this.onTap,
   });
 
   final void Function() onAdd;
   final void Function(String, String, String, String, String) onEdit;
   final void Function(String) onDelete;
+  final void Function(String) onTap;
 
   @override
   State<PaymentsView> createState() => _PaymentsViewState();
@@ -66,6 +68,7 @@ class _PaymentsViewState extends State<PaymentsView> {
                           );
                         },
                         onDeletePressed: () => widget.onDelete(id),
+                        onTap: () => widget.onTap(id),
                       ),
                     );
                   },

@@ -17,5 +17,6 @@ refactor
 
 - fix android error (for myself run flutter doctor)
 
+- actually images must got by backend but backend isnt ready :(
 
 

@@ -13,7 +13,7 @@ class TileEdit extends StatelessWidget {
 
   final String? title;
   final String subtitle;
-  final void Function() onEditPressed;
+  final void Function()? onEditPressed;
   final void Function()? onDeletePressed;
 
   @override
@@ -28,7 +28,7 @@ class TileEdit extends StatelessWidget {
 
                 children: [
                   SlidableAction(
-                    onPressed: (context) => onEditPressed(),
+                    onPressed: (context) => onEditPressed?.call(),
                     backgroundColor: Color(0xFF0392CF),
                     foregroundColor: Colors.white,
                     icon: Icons.edit,

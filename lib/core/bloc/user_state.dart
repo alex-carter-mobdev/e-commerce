@@ -5,9 +5,9 @@ class UserState {
   final String email;
   final String gender;
   final int age;
-  final List<Map<String, dynamic>> addresses;
-  final List<Map<String, dynamic>> payments;
-  final List<Map<String, dynamic>> favorites;
+  final List<Map<String, String>> addresses;
+  final List<Map<String, String>> payments;
+  final List<Map<String, String>> favorites;
 
   UserState({
     this.id = '',
@@ -16,15 +16,9 @@ class UserState {
     this.email = '',
     this.gender = '',
     this.age = 0,
-    this.addresses = const [
-      {"": ""},
-    ],
-    this.payments = const [
-      {"": ""},
-    ],
-    this.favorites = const [
-      {"": ""},
-    ],
+    this.addresses = const [],
+    this.payments = const [],
+    this.favorites = const [],
   });
 
   UserState copyWith({
@@ -34,9 +28,9 @@ class UserState {
     String? email,
     String? gender,
     int? age,
-    List<Map<String, dynamic>>? addresses,
-    List<Map<String, dynamic>>? payments,
-    List<Map<String, dynamic>>? favorites,
+    List<Map<String, String>>? addresses,
+    List<Map<String, String>>? payments,
+    List<Map<String, String>>? favorites,
   }) {
     return UserState(
       id: id ?? this.id,

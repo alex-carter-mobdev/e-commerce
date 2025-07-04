@@ -26,13 +26,7 @@ class User extends Bloc<UserEvent, UserState> {
         );
       } else {
         Toastify.e(res.$2);
-        emit(
-          state.copyWith(
-            addresses: [
-              {"the error": res.$2},
-            ],
-          ),
-        );
+        // emit(state.copyWith());
       }
     });
     on<SetUserData>((event, emit) {
@@ -50,11 +44,11 @@ class User extends Bloc<UserEvent, UserState> {
   }
 }
 
-List<Map<String, dynamic>>? cast(data, key) {
+List<Map<String, String>>? cast(data, key) {
   logger.e(data[key]);
   return (data[key] as List?)?.map((e) {
     logger.e(e);
 
-    return Map<String, dynamic>.from(e);
+    return Map<String, String>.from(e);
   }).toList();
 }

@@ -25,3 +25,4 @@ class SetUserData extends UserEvent {
 }
 
 class ReFetchUserData extends UserEvent {}
+

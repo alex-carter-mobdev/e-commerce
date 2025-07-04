@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:e_commerce/core/utils/toast.dart';
-import 'package:e_commerce/features/auth/view/widgets/back_button.dart';
+import 'package:e_commerce/core/widgets/back_button.dart';
 import 'package:e_commerce/features/settings/model/settings_service.dart';
 import 'package:e_commerce/features/settings/view/page/address/add_edit/address_add_edit_view.dart';
 import 'package:e_commerce/core/bloc/user_bloc.dart';

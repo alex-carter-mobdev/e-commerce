@@ -1,4 +1,4 @@
-import 'package:e_commerce/features/auth/view/widgets/primary_button.dart';
+import 'package:e_commerce/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordView extends StatelessWidget {
@@ -34,12 +34,3 @@ class ForgotPasswordView extends StatelessWidget {
     );
   }
 }
-
-// !SvgPicture.asset('/')
-// Utilities: Error in unawaited Future:Error: WipError -32000 Execution was terminated
-// Failed to set DevTools server address: ext.flutter.activeDevToolsServerAddress: (-32603) Unexpected DWDS error for callServiceExtension: WipError -32000 Cannot find context with specified id. Deep links to DevTools will not show in Flutter errors.
-// ext.flutter.connectedVmServiceUri: (-32603) Unexpected DWDS error for callServiceExtension: WipError -32000 Cannot find context with specified id
-// Failed to set vm service URI: ext.flutter.connectedVmServiceUri: (-32603) Unexpected DWDS error for callServiceExtension: WipError -32000 Cannot find context with specified id. Deep links to DevTools will not show in Flutter errors.
-// Failed to set DevTools server address: ext.flutter.activeDevToolsServerAddress: (-32603) Unexpected DWDS error for callServiceExtension: WipError -32000 Cannot find context with specified id. Deep links to DevTools will not show in Flutter errors.
-// ext.flutter.connectedVmServiceUri: (-32603) Unexpected DWDS error for callServiceExtension: WipError -32000 Cannot find context with specified id
-// Failed to set vm service URI: ext.flutter.connectedVmServiceUri: (-32603) Unexpected DWDS error for callServiceExtension: WipError -32000 Cannot find context with specified id. Deep links to DevTools will not show in Flutter errors.

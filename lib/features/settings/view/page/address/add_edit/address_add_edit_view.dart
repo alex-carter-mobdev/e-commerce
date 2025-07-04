@@ -1,5 +1,5 @@
-import 'package:e_commerce/features/auth/view/widgets/input.dart';
-import 'package:e_commerce/features/auth/view/widgets/primary_button.dart';
+import 'package:e_commerce/core/widgets/input.dart';
+import 'package:e_commerce/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 

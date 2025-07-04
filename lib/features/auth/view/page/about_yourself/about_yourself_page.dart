@@ -6,7 +6,7 @@ import 'package:e_commerce/core/utils/toast.dart';
 
 import 'package:e_commerce/features/auth/model/service/auth_service.dart';
 import 'package:e_commerce/features/auth/view/page/about_yourself/about_yourself_view.dart';
-import 'package:e_commerce/features/auth/view/widgets/primary_button.dart';
+import 'package:e_commerce/core/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:go_router/go_router.dart';

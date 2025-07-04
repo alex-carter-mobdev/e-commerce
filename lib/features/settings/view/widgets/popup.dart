@@ -1,6 +1,6 @@
-import 'package:e_commerce/features/auth/view/widgets/input.dart';
 import 'package:e_commerce/core/bloc/user_bloc.dart';
 import 'package:e_commerce/core/bloc/user_state.dart';
+import 'package:e_commerce/core/widgets/input.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';

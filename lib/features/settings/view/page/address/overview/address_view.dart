@@ -1,6 +1,6 @@
 import 'package:e_commerce/core/bloc/user_bloc.dart';
 import 'package:e_commerce/core/bloc/user_state.dart';
-import 'package:e_commerce/features/auth/view/widgets/primary_button.dart';
+import 'package:e_commerce/core/widgets/primary_button.dart';
 import 'package:e_commerce/features/settings/view/widgets/tile_edit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -2,7 +2,7 @@ import 'package:e_commerce/core/bloc/user_bloc.dart';
 import 'package:e_commerce/core/bloc/user_event.dart';
 import 'package:e_commerce/core/routes/router.dart';
 import 'package:e_commerce/core/utils/toast.dart';
-import 'package:e_commerce/features/auth/view/widgets/back_button.dart';
+import 'package:e_commerce/core/widgets/back_button.dart';
 import 'package:e_commerce/features/settings/model/settings_service.dart';
 import 'package:e_commerce/features/settings/view/page/address/overview/address_view.dart';
 import 'package:flutter/material.dart';

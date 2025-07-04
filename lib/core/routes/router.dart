@@ -3,8 +3,23 @@ import 'package:e_commerce/features/auth/view/page/forgot_password/1-step/forgot
 import 'package:e_commerce/features/auth/view/page/forgot_password/2-step/forgot_password_page.dart'
     as step2_page;
 import 'package:e_commerce/features/auth/view/page/about_yourself/about_yourself_page.dart';
+import 'package:e_commerce/features/cart/view/pages/cart_page.dart';
+import 'package:e_commerce/features/categories/view/page/item/category_items_page.dart';
+import 'package:e_commerce/features/categories/view/page/list/category_list_page.dart';
+import 'package:e_commerce/features/checkout/view/pages/checkout/checkout_page.dart';
+import 'package:e_commerce/features/checkout/view/pages/select_address/select_address_page.dart';
+import 'package:e_commerce/features/checkout/view/pages/select_payment/select_payment_page.dart';
+import 'package:e_commerce/features/home/view/page/home/home_page.dart';
+import 'package:e_commerce/features/home/view/page/new_in/new_in_page.dart';
+import 'package:e_commerce/features/home/view/page/top_sellings/top_sellings_page.dart';
+import 'package:e_commerce/features/notifications/view/page/notifications_page.dart';
+import 'package:e_commerce/features/orders/view/page/item/order_item_page.dart';
+import 'package:e_commerce/features/orders/view/page/list/orders_page.dart';
+import 'package:e_commerce/features/products/view/page/products_page.dart';
+import 'package:e_commerce/features/search/view/page/search_page.dart';
 import 'package:e_commerce/features/settings/view/page/address/add_edit/address_add_edit_page.dart';
 import 'package:e_commerce/features/settings/view/page/address/overview/address_page.dart';
+import 'package:e_commerce/features/settings/view/page/favorties/favorties_page.dart';
 import 'package:e_commerce/features/settings/view/page/payments/add_edit/payments_add_edit_page.dart';
 import 'package:e_commerce/features/settings/view/page/payments/overview/payments_page.dart';
 import 'package:e_commerce/features/settings/view/page/settings/settings_page.dart';
@@ -51,10 +66,7 @@ GoRouter router = GoRouter(
         StatefulShellBranch(
           navigatorKey: Routes._homeNavigatorKey,
           routes: [
-            GoRoute(
-              path: Routes.home,
-              builder: (context, state) => PageInProgress(),
-            ),
+            GoRoute(path: Routes.home, builder: (context, state) => HomePage()),
           ],
         ),
         StatefulShellBranch(
@@ -62,7 +74,7 @@ GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: Routes.notifications,
-              builder: (context, state) => PageInProgress(),
+              builder: (context, state) => NotificationsPage(),
             ),
           ],
         ),
@@ -71,7 +83,19 @@ GoRouter router = GoRouter(
           routes: [
             GoRoute(
               path: Routes.orders,
-              builder: (context, state) => PageInProgress(),
+              builder: (context, state) => OrdersPage(),
+              routes: [
+                GoRoute(
+                  path: Routes.orderItem,
+                  builder:
+                      (context, state) => OrderItemPage(
+                        id: state.pathParameters['id'] ?? '',
+                        key: ValueKey(
+                          'order_item_${state.pathParameters['id'] ?? ''}',
+                        ),
+                      ),
+                ),
+              ],
             ),
           ],
         ),
@@ -88,7 +112,9 @@ GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.address,
-      builder: (context, state) => AddressPage(),
+      builder:
+          (context, state) =>
+              AddressPage(querryParamerts: state.uri.queryParameters),
 
       routes: [
         GoRoute(
@@ -103,7 +129,9 @@ GoRouter router = GoRouter(
     ),
     GoRoute(
       path: Routes.payments,
-      builder: (context, state) => PaymentsPage(),
+      builder:
+          (context, state) =>
+              PaymentsPage(querryParamerts: state.uri.queryParameters),
       routes: [
         GoRoute(
           path: Routes.paymentsAddEdit,
@@ -114,6 +142,63 @@ GoRouter router = GoRouter(
               ),
         ),
       ],
+    ),
+    GoRoute(
+      path: Routes.favourites,
+      builder: (context, state) => FavortiesPage(),
+    ),
+    GoRoute(
+      path: Routes.categories,
+      builder: (context, state) => CategoryListPage(),
+      routes: [
+        GoRoute(
+          path: Routes.categoriesId,
+          builder:
+              (context, state) => CategoryItemsPage(
+                id: state.pathParameters['categoryId'] ?? '',
+                querryParamerts: state.uri.queryParameters,
+              ),
+          // routes: [
+          //   GoRoute(
+          //     path: Routes.product,
+          //     builder:
+          //         (context, state) => ProductsPage(
+          //           id: state.pathParameters['productId'] ?? '',
+          //           querryParamerts: state.uri.queryParameters,
+          //         ),
+          //   ),
+          // ],
+        ),
+      ],
+    ),
+    GoRoute(
+      path: Routes.checkout,
+      builder:
+          (context, state) =>
+              CheckoutPage(querryParamerts: state.uri.queryParameters),
+    ),
+    GoRoute(
+      path: Routes.selectAddress,
+      builder: (context, state) => SelectAddressPage(),
+    ),
+    GoRoute(
+      path: Routes.selectPayment,
+      builder: (context, state) => SelectPaymentPage(),
+    ),
+    GoRoute(
+      path: Routes.product,
+      builder:
+          (context, state) => ProductsPage(
+            id: state.pathParameters['id'] ?? '',
+            querryParamerts: state.uri.queryParameters,
+          ),
+    ),
+    GoRoute(path: Routes.cart, builder: (context, state) => CartPage()),
+    GoRoute(path: Routes.search, builder: (context, state) => SearchPage()),
+    GoRoute(path: Routes.newIn, builder: (context, state) => NewInPage()),
+    GoRoute(
+      path: Routes.topSelling,
+      builder: (context, state) => TopSellingsPage(),
     ),
   ],
 );

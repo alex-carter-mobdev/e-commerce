@@ -8,11 +8,24 @@ class Routes {
   static String aboutYourself = '/aboutYourself';
   static String settings = '/settings';
   static String orders = '/orders';
+  static String orderItem = ':id';
   static String notifications = '/notifications';
   static String address = '/address';
   static String addressAddEdit = ':id';
   static String payments = '/payments';
   static String paymentsAddEdit = ':id';
+  static String favourites = '/favourites';
+  static String categories = '/categories';
+  static String categoriesId = ':categoryId';
+  static String products = '/products';
+  static String product = '/products/:productId';
+  static String search = '/search';
+  static String cart = '/cart';
+  static String checkout = '/checkout';
+  static String selectAddress = '/selectAddress';
+  static String selectPayment = '/selectPayment';
+  static String topSelling = '/topSelling';
+  static String newIn = '/newIn';
   static var forgotPassword = _ForgotPasswordRoutes();
 
   static final _rootNavigatorKey = GlobalKey<NavigatorState>();
